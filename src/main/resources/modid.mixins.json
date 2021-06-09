@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.reavershark.centeredinventory.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+  ],
+  "client": [
+    "MixinRecipeBookWidget",
+    "MixinAbstractInventoryScreen"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
