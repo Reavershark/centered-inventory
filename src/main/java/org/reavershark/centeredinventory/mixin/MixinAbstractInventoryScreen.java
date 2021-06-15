@@ -2,6 +2,7 @@ package org.reavershark.centeredinventory.mixin;
 
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.client.MinecraftClient;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,9 +17,18 @@ public class MixinAbstractInventoryScreen {
     @Shadow
     protected boolean drawStatusEffects;
 
+    @Inject(method = "applyStatusEffectOffset()V", at = @At(value = "HEAD"), cancellable = true)
+    protected void noStatusEffectOffset(CallbackInfo cir) {
+        cir.cancel();
+    }
+
     @ModifyVariable(method = "drawStatusEffects(Lnet/minecraft/client/util/math/MatrixStack;)V", at = @At("STORE"), ordinal = 0)
     private int moveEffectsRight(int i) {
-        return i + 304;
+        if (MinecraftClient.getInstance().player.isCreative()) {
+            return i + 323;
+        } else {
+            return i + 304;
+        }
     }
 
     @Inject(method = "render(Lnet/minecraft/client/util/math/MatrixStack;IIF)V", at = @At(value = "HEAD"))
