@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Centered inventory",
-  "description": "Inventory posision is unaffected by the recipe book",
+  "description": "Inventory position is unaffected by the recipe book",
   "authors": [
     "Reavershark"
   ],
@@ -12,7 +12,7 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/centeredinventory/icon.png",
 
   "environment": "*",
   "entrypoints": {
@@ -21,7 +21,7 @@
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "centeredinventory.mixins.json"
   ],
 
   "depends": {
