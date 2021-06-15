@@ -32,7 +32,8 @@ public abstract class MixinRecipeBookWidget extends DrawableHelper implements Dr
         this.leftOffset = 165;
     }
 
-    private boolean isWide() {
-       return this.leftOffset == 165;
+    @Inject(method = "isWide()Z", at = @At("RETURN"), cancellable = true)
+    private void fixWideCheck(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(this.leftOffset == 165);
     }
 }
